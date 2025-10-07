@@ -1,0 +1,40 @@
+set_tool_digital_outputs(-1, 2)
+set_accx(1000); set_velx(1500)
+
+ap = posx()
+bp = posx()
+home = posx()
+
+Ap = [0, 0, 0], [0, 0, 0], [0, 0, 0]
+Ar = [0, 0, 0], [0, 0, 0], [0, 0, 0]
+Bp = [0, 0, 0], [0, 0, 0], [0, 0, 0]
+Br = [0, 0, 0], [0, 0, 0], [0, 0, 0]
+Bs = [0, 0, 0], [0, 0, 0], [0, 0, 0]
+
+def fn_GR(S, z=100, z1=0):
+    movel(trans(S,[0, 0, z, 0, 0, 0]))
+    movel(trans(S,[0, 0, z1, 0, 0, 0]))
+    set_tool_digital_outputs(1, -2)
+    wait(0.5)
+    movel(trans(S,[0, 0, z, 0, 0, 0]))
+
+def fn_RE(S, z=100, z1=0):
+    movel(trans(S,[0, 0, z, 0, 0, 0]))
+    movel(trans(S,[0, 0, z1, 0, 0, 0]))
+    set_tool_digital_outputs(-1, 2)
+    wait(0.5)
+    movel(trans(S,[0, 0, z, 0, 0, 0]))
+
+def fn_move(S, z=0):
+    movel(trans(S,[0, 0, z, 0, 0, 0]))
+    
+for in range(9):
+    if Ar[i] == posx # A
+        fn_GR(Ap[i])
+        for j in range(9):
+            if Bs[j] == posx # B
+                fn_RE(Bp[j])
+                Ar[i], Br[j] = Br[j], Ar[i]
+                break
+        break
+fn_move(home)
